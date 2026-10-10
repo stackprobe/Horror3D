@@ -7,11 +7,15 @@ $stage = $null
 try {
     $solution = Join-Path $root 'src\Horror.sln'
     $docs = Join-Path $root 'doc'
+    $launcher = Join-Path $root 'out\_ゲームスタート.bat'
     if (!(Test-Path -LiteralPath $solution -PathType Leaf)) {
         throw 'src\Horror.sln was not found.'
     }
     if (!(Test-Path -LiteralPath $docs -PathType Container)) {
         throw 'doc was not found.'
+    }
+    if (!(Test-Path -LiteralPath $launcher -PathType Leaf)) {
+        throw 'out\_ゲームスタート.bat was not found. Run Release.bat to generate it.'
     }
     Get-Command dotnet -ErrorAction Stop | Out-Null
 
@@ -27,6 +31,7 @@ try {
         throw 'HorrorGame.exe was not generated.'
     }
 
+    Copy-Item -LiteralPath $launcher -Destination $payload
     Copy-Item -LiteralPath $docs -Destination (Join-Path $payload 'doc') -Recurse -Force
     Add-Type -AssemblyName System.IO.Compression.FileSystem
     $archive = Join-Path $stage 'Horror3D.zip'
