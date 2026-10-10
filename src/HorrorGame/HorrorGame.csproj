@@ -9,7 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Raylib-cs" Version="7.0.2" />
-    <EmbeddedResource Include="Game.cs;World.cs" />
+    <EmbeddedResource Include="Game.cs;World.cs;WitnessEnding.cs;EndingAchievements.cs" />
     <None Update="Shaders/*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
