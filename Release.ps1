@@ -7,7 +7,7 @@ $stage = $null
 try {
     $solution = Join-Path $root 'src\Horror.sln'
     $docs = Join-Path $root 'doc'
-    $launcher = Join-Path $root 'out\_ゲームスタート.bat'
+    $launcher = Join-Path $root 'res\_ゲームスタート.bat'
     if (!(Test-Path -LiteralPath $solution -PathType Leaf)) {
         throw 'src\Horror.sln was not found.'
     }
@@ -15,7 +15,7 @@ try {
         throw 'doc was not found.'
     }
     if (!(Test-Path -LiteralPath $launcher -PathType Leaf)) {
-        throw 'out\_ゲームスタート.bat was not found. Run Release.bat to generate it.'
+        throw 'res\_ゲームスタート.bat was not found.'
     }
     Get-Command dotnet -ErrorAction Stop | Out-Null
 
